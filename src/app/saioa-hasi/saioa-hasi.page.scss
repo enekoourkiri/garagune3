@@ -1,0 +1,27 @@
+#rounded {
+    width: 100%;
+    height: auto;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 10px;
+    border:1px solid rgb(62, 176, 252);
+    margin: 0 auto;
+
+}
+
+#rounded:active{
+    box-shadow: 0 0 20px rgb(68, 196, 255);
+}
+
+.div{
+    width: 30%;
+    margin:0 auto;
+    margin-top: 2em;
+}
+
+#botoia{
+    width: 30%;
+    margin: 0 auto;
+}
+
+

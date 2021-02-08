@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+        <ion-icon name="arrow-back-outline" size="large" [routerLink]="['/erabiltzaileakIkusi']"></ion-icon>
+        <ion-title>Iniciar sesión</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <div class="div">
+      <ion-label>Nombre de usuario</ion-label>
+      <ion-input id="rounded"  type="text" [(ngModel)]="erabiltzaile" [ngModelOptions]="{standalone: true}"></ion-input>
+    </div>
+
+    <div class="div">
+      <ion-label>Contraseña</ion-label>
+      <ion-input id="rounded" type="password" [(ngModel)]="pasahitza" [ngModelOptions]="{standalone: true}"></ion-input>
+    </div>
+
+    <br>
+
+    <ion-row>
+      <ion-col>
+        <ion-button id="botoia" type="submit" (click)="login()" expand="block">Iniciar sesión</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

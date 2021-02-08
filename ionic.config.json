@@ -1,0 +1,7 @@
+{
+  "name": "garagune",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

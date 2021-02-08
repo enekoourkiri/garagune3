@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+        <ion-icon name="arrow-back-outline" size="large" (click)="atzera()" ></ion-icon>
+        <ion-title>Categorías</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<div id="toolbar">
+  <ion-toolbar id="array">
+    <ion-row>
+      <ion-col size="10">
+        <ion-row>
+          <div *ngFor="let item of arrayArgazki">
+            <img id="imgToolbar" src="{{item}}">&nbsp;&nbsp;
+          </div>
+        </ion-row>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon class="ikonoak" name="close" size="large" (click)="arrayEzabatu()"></ion-icon>
+        <ion-icon class="ikonoak" name="play" size="large" (click)="hitzegin()"></ion-icon>
+        <ion-icon class="ikonoak" name="backspace" size="large" (click)="azkenaBorratu()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</div>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="2"></ion-col>
+    <ion-col size="2" >
+        <img class="argazkia" (click)="hablarPiktogramak('YO','../../assets/argazkiak/yo.png')"  src="../../assets/argazkiak/yo.png" />
+    </ion-col>
+    <ion-col size="2" >
+        <img (click)="hablarPiktogramak('QUIERO','../../assets/argazkiak/quiero.jpg')"  src="../../assets/argazkiak/quiero.jpg" />
+    </ion-col>
+    
+    <ion-col size="2" >
+        <img (click)="hablarPiktogramak('SI','../../assets/argazkiak/bai.jpg')"  src="../../assets/argazkiak/bai.jpg" />
+    </ion-col>
+    <ion-col size="2" >
+        <img (click)="hablarPiktogramak('NO','../../assets/argazkiak/ez.jpg')"  src="../../assets/argazkiak/ez.jpg" />
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-item class="text-wrap" *ngFor="let item of records">
+        <ion-avatar slot="start">
+          <img [src]="item.image">
+        </ion-avatar>
+        <ion-label>
+          <ion-row>
+            <ion-col size="10">
+              <h3 (click)="hablar(item.kategoria, item.id)">{{ item.kategoria }}</h3>
+            </ion-col>
+            <ion-col size="2">
+              <div *ngIf="isAdmin">
+                <ion-icon name="trash-outline" size="large" color="danger" (click)="ezabatu(item.id)"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item *ngFor="let itemGenerala of generala">
+        <ion-avatar slot="start">
+          <img src="{{itemGenerala.argazkiaKat}}">
+        </ion-avatar>
+        <ion-label>
+          <ion-row>
+            <ion-col size="12">
+              <h3 (click)="hablarGeneral(itemGenerala.izenaKat, itemGenerala.id)">{{ itemGenerala.izenaKat }}</h3>
+            </ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<div *ngIf="isAdmin ==true || userEdit == true">
+  <ion-fab horizontal="center" vertical="bottom">
+    <ion-row>
+      <ion-fab-button color="primary" [routerLink]="['/kategoriaSortu']">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-row>
+  </ion-fab>
+</div>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form>
+    <div class="div">
+      <ion-label>Nombre de usuario (sin espacios)</ion-label>
+      <ion-input id="rounded" type="text" [(ngModel)]="erabiltzaile" [ngModelOptions]="{standalone: true}"></ion-input>
+    </div>
+
+    <div class="div">
+      <ion-label>Contraseña</ion-label>
+      <ion-input id="rounded" type="password" [(ngModel)]="pasahitza" [ngModelOptions]="{standalone: true}"></ion-input>
+    </div>
+
+    <div class="div">
+      <ion-label>Repite la contraseña</ion-label>
+      <ion-input id="rounded" type="password" [(ngModel)]="bpasahitza" [ngModelOptions]="{standalone: true}">
+      </ion-input>
+    </div>
+
+    <br>
+    
+    <ion-row>
+      <ion-col>
+        <ion-button id="botoia" type="submit" (click)="register()" expand="block">Registrarse</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

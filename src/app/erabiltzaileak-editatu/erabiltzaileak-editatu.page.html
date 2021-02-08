@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <!-- <ion-button color="danger" size="small" (click)="goBack()">Erabiltzaileak</ion-button> -->
+      <ion-icon name="arrow-back-outline" size="large" (click)="goBack()"></ion-icon>
+      <ion-title>Editar usuario</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <br>
+
+  <ion-label>
+    <img *ngIf="croppedImage" src={{croppedImage}} alt="">
+  </ion-label>
+  <br>
+
+  <ion-card class="ion-text-center">
+    <ion-card-header>
+      <ion-card-title>Elige una foto de perfil</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button *ngIf="botoia" id="botoia" (click)="uploadFile()">Imagen</ion-button>
+      <input type="file" *ngIf="inputa" (change)="ordenagailuanArgazkiakIgo($event)"/>
+    </ion-card-content>
+  </ion-card>
+
+  <br>
+
+  <ion-list>
+    <ion-item lines="none">
+      <ion-label class="label">Admin</ion-label>
+      <ion-toggle [(ngModel)]="isAdmin" [ngClass]="isAdmin == true? 'checked=true' : 'checked=false'"></ion-toggle>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label class="label">Puede editar</ion-label>
+      <ion-toggle [(ngModel)]="userEdit" color="secondary" [ngClass]="userEdit == true? 'checked=true' : 'checked=false'"></ion-toggle>
+    </ion-item>
+
+
+    <ion-row>
+      <ion-col size="2.5">
+        <ion-item lines="none">
+          <ion-label style="font-size: 1.5em;" floating>Monitor ID</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-input style="font-size: 1.5em;" type="text" [(ngModel)]="idMonitore"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-list>
+  <ion-row style="margin-left: 1em;">
+    <ion-button  (click)="formSubmit()">Guardar</ion-button>
+    <ion-button color="danger" (click)="ezabatu(id)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <!-- <ion-col size="10"> -->
+        <ion-title>Lista de usuarios</ion-title>
+      <!-- </ion-col> -->
+      <!-- <ion-col size="1"> -->
+        <ion-icon class="goiburua" name="document-lock-outline" size="large" routerLink="/saioaHasi"></ion-icon>
+      <!-- </ion-col> -->
+      <!-- <ion-col size="1"> -->
+        
+        <ion-icon *ngIf="isAdmin"  class="goiburua" name="key" size="large" (click)="pasahitzaAldatu()"></ion-icon>
+        
+      <!-- </ion-col> -->
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngFor="let item of erabiltzaileak; let i= index">
+    <div *ngIf="isAdmin">
+      <div *ngIf="!item.isAdmin">
+        <div *ngIf="item.idMonitore == isAdminId">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="{{item.argazkia}}">
+            </ion-avatar>
+            <ion-label>
+              <h3 (click)="erabiltzaileAukeratu(item.id)">{{ izenak[i] }}</h3>
+            </ion-label>
+            <ion-icon name="create-outline" size="large" (click)="erabiltzaileaEditatu(item)"></ion-icon>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-row>
+    <div *ngFor="let item of erabiltzaileak; let i= index">
+      <div *ngIf="!isAdmin">
+        <div *ngIf="!item.isAdmin">
+          <ion-col>
+            <ion-card>
+              <img (click)="erabiltzaileAukeratu(item.id)" class="argazkia" src="{{item.argazkia}}" />
+              <ion-card-header>
+                <ion-card-title>{{ izenak[i] }}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </div>
+      </div>
+    </div>
+  </ion-row>
+</ion-content>
+
+<div *ngIf="isAdmin">
+  <ion-fab horizontal="center" vertical="bottom">
+    <ion-row>
+      <ion-fab-button color="primary" routerLink="/izenaEman">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      &nbsp;
+      <ion-fab-button color="danger" (click)="logOut()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-row>
+  </ion-fab>
+</div>
